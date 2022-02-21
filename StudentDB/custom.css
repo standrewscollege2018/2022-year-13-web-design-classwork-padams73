@@ -1,0 +1,34 @@
+/* Set the background for the navbar */
+.custom-nav {
+  background-color: #123456;
+}
+/* Change the colour of the brand text */
+.custom-nav .navbar-brand {
+  color: white;
+}
+/* Change link colours in the navbar, including a background when hovering */
+.custom-nav .nav-link {
+  color: white;
+}
+.custom-nav .nav-link:hover {
+  background-color: #458fd9;
+
+}
+/* Format the dropdown menu */
+.custom-nav .dropdown-menu {
+  background-color: #123456;
+}
+.custom-nav .dropdown-item {
+  color: white;
+}
+.custom-nav .dropdown-item:hover {
+  background-color: #458fd9;
+}
+
+/* Navbar toggler/burger menu */
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    border: white solid 1px;
+    box-shadow: none;
+}
