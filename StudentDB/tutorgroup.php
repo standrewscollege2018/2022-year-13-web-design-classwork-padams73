@@ -30,6 +30,20 @@
           echo "</div>";
           echo "</div>";
           echo "</div>";
+          /*
+          The commented-out content is another way you could combine
+          PHP and Bootstrap. In the below method, we stop PHP each time
+          we want to add HTML, and then reopen the PHP when using it.
+          ?>
+          <div class='col-12 col-md-6 col-xl-4'>
+            <div class='card'>
+              <img src='images/<?php echo $photo; ?>' class='card-img-top'>
+              <div class='card-body'>
+                <p class='card-text'><?php echo $firstname $lastname; ?></p>
+              </div>
+            </div>
+          </div>
+          <?php */
         } while ($tutor_aa = mysqli_fetch_assoc($tutor_qry));
       }
     }
