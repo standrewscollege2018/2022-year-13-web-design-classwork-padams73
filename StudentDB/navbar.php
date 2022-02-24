@@ -33,7 +33,7 @@ $tutor_aa = mysqli_fetch_assoc($tutor_qry);
          ?>
          <li><hr class="dropdown-divider text-light"></li>
 
-         <li><a class="dropdown-item" href="#">All students</a></li>
+         <li><a class="dropdown-item" href="index.php?page=allstudents">All students</a></li>
        </ul>
      </li>
 

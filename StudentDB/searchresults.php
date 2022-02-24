@@ -15,7 +15,7 @@
   $result_qry = mysqli_query($dbconnect, $result_sql);
   // If no results, display message
   if(mysqli_num_rows($result_qry)==0) {
-      echo "<h1>No results found</h1>";
+      echo "<div class='col pt-3'><h2>No results found</h2></div>";
     } else {
       $result_aa = mysqli_fetch_assoc($result_qry);
       // Display each student in a card

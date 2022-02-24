@@ -12,7 +12,8 @@
       $tutor_qry = mysqli_query($dbconnect, $tutor_sql);
       // If no students in tutor group, display a message
       if(mysqli_num_rows($tutor_qry)==0) {
-        echo "<p>No students in $tutorcode</p>";
+        echo "<div class='col pt-3'>";
+        echo "<p>No students in $tutorcode</p></div>";
       } else {
         // Display tutorgroup code
         $tutor_aa = mysqli_fetch_assoc($tutor_qry);
