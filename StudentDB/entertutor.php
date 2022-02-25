@@ -1,4 +1,13 @@
 <?php
+
+// Check to see if user is logged in
+
+if(!isset($_SESSION['admin'])) {
+  // Not logged in, redirect back to index page
+  header("Location: index.php");
+}
+
+
   // Check if both tutorcode and tutor name have been set.
   // If not, return browser to addtutor page with an error
   if($_POST['tutor']=="" or $_POST['tutorcode']=="") {

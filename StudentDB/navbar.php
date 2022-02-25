@@ -15,6 +15,10 @@ $tutor_aa = mysqli_fetch_assoc($tutor_qry);
  </button>
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+     <!-- Admin link -->
+     <li class="nav-item dropdown">
+       <a class="nav-link" href="index.php?page=login">Admin</a>
+     </li>
      <!-- Dropdown of tutor groups -->
      <li class="nav-item dropdown">
        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
