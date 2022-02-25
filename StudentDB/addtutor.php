@@ -33,10 +33,11 @@
                 Tutor code already exists
               </div>
               <?php
+              // Tutorcode was not 3 characters long
             } else if ($_GET['error']=='length') {
               ?>
               <div class="alert alert-danger" role="alert">
-                Tutor code can only be 3 characters
+                Tutor code must be 3 characters long
               </div>
               <?php
             }
