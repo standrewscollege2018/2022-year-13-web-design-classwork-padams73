@@ -6,8 +6,17 @@
   } else {
 
   // Set up variables storing both the tutor name and the tutorcode
-  $tutor = $_POST['tutor'];
-  $tutorcode = $_POST['tutorcode'];
+  // We use mysqli_real_escape_string() to prevent SQL injection attacks
+  // We also use the strlen() function to double-check that the tutor
+  // code is 3 characters long
+
+  $tutor = mysqli_real_escape_string($dbconnect, $_POST['tutor']);
+  $tutorcode = mysqli_real_escape_string($dbconnect, $_POST['tutorcode']);
+
+  if (strlen($tutorcode) != 3) {
+    header("Location: index.php?page=addtutor&error=length");
+  }
+  else {
   // Before adding record, check if it already exists
   // (Only do this if you can't have duplicate records)
   $check_sql = "SELECT * FROM tutorgroup WHERE tutorcode='$tutorcode'";
@@ -19,7 +28,7 @@
     $insert_sql = "INSERT INTO tutorgroup (tutor, tutorcode) VALUES ('$tutor', '$tutorcode')";
     $insert_qry = mysqli_query($dbconnect, $insert_sql);
   }
-
+}
 
 }
  ?>

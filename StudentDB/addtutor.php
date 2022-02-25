@@ -15,7 +15,9 @@
         </div>
         <div class="mb-3">
           <?php
+          // Check if there is an error being returned
             if(isset($_GET['error'])) {
+              // One or both fields were blank
               if($_GET['error']=='blank') {
 
 
@@ -24,10 +26,17 @@
                 Please enter both the tutor name and code
               </div>
               <?php
+              // Tutor already exists
             } else if ($_GET['error']=='exists') {
               ?>
               <div class="alert alert-danger" role="alert">
                 Tutor code already exists
+              </div>
+              <?php
+            } else if ($_GET['error']=='length') {
+              ?>
+              <div class="alert alert-danger" role="alert">
+                Tutor code can only be 3 characters
               </div>
               <?php
             }
