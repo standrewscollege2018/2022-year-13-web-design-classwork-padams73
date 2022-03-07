@@ -13,7 +13,7 @@ if(!isset($_SESSION['admin'])) {
     <div class="col p-3">
       <p class="display-2">Enter new student</p>
       <!-- When form is submitted, post information to the enterstudent page -->
-      <form class="" action="index.php?page=enterstudent" method="post">
+      <form class="" action="index.php?page=enterstudent" method="post" enctype="multipart/form-data">
         <div class="mb-3">
           <!-- Get the tutor's name -->
           <label for="firstname" class="form-label">First name</label>
@@ -28,22 +28,36 @@ if(!isset($_SESSION['admin'])) {
           <!-- Select tutor group -->
           <?php
             // YOUR TASK: Get all tutor groups available for selection
-
+            // Run an SQL SELECT query to get all tutor groups
+            $tutorgroup_sql = "SELECT * FROM tutorgroup";
+            $tutorgroup_qry = mysqli_query($dbconnect, $tutorgroup_sql);
+            $tutorgroup_aa = mysqli_fetch_assoc($tutorgroup_qry);
            ?>
            <!-- Display tutorgroups in a select menu -->
            <label for="tutorcode" class="form-label">Select tutor group</label>
-           <select name="tutorcode" class="form-select" aria-label="tutorgroup">
+           <select name="tutorgroupID" class="form-select" aria-label="tutorgroup">
              <!-- YOUR TASK: display each tutor group code in an option target,
            with value of tutorgroupID -->
-             <option value="1">One</option>
-             <option value="2">Two</option>
-             <option value="3">Three</option>
+           <!-- Loop through the tutorgroups and display a new option for each one -->
+           <?php
+            do {
+
+              $tutorgroupID = $tutorgroup_aa['tutorgroupID'];
+              $tutorcode = $tutorgroup_aa['tutorcode'];
+
+              echo "<option value=$tutorgroupID>$tutorcode</option>";
+            } while ($tutorgroup_aa = mysqli_fetch_assoc($tutorgroup_qry))
+
+            ?>
+
+
+
            </select>
         </div>
         <div class="mb-3">
           <!-- Select an image for the student -->
-          <!-- YOUR TASK: go to W3 Schools and look up how to upload an image. -->
-        </div>
+          <input class="form-control" type="file" name="fileToUpload" id="fileToUpload">
+          </div>
         <div class="mb-3">
           <?php
           // Check if there is an error being returned
