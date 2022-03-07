@@ -40,7 +40,26 @@ $tutor_aa = mysqli_fetch_assoc($tutor_qry);
          <li><a class="dropdown-item" href="index.php?page=allstudents">All students</a></li>
        </ul>
      </li>
+     <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         Subjects
+       </a>
+       <ul class="dropdown-menu" aria-labelledby="SubjectsDropdown">
+         <?php
+         // Select all subjects
+          $subject_sql = "SELECT * FROM subject";
+          $subject_qry = mysqli_query($dbconnect, $subject_sql);
+          $subject_aa = mysqli_fetch_assoc($subject_qry);
 
+          // Display each subject as a dropdown item
+          do {
+            $subjectID = $subject_aa['subjectID'];
+            $subject = $subject_aa['subject'];
+            echo "<li><a class='dropdown-item' href='index.php?page=subject&subjectID=$subjectID'>$subject</a>";
+          } while ($subject_aa = mysqli_fetch_assoc($subject_qry))
+          ?>
+       </ul>
+     </li>
    </ul>
    <!-- Search form goes to the searchresults page -->
    <form class="d-flex" action="index.php?page=searchresults" method="post">
