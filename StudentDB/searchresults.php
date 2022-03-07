@@ -23,12 +23,14 @@
         $firstname = $result_aa['firstname'];
         $lastname = $result_aa['lastname'];
         $photo = $result_aa['photo'];
+        $studentID = $result_aa['studentID'];
         echo "<div class='col-12 col-md-6 col-xl-4'>";
         echo "<div class='card'>";
+        echo "<a href='index.php?page=student&studentID=$studentID'>";
         echo "<img src='images/$photo' class='card-img-top'>";
         echo "<div class='card-body'>";
         echo "<p class='card-text'>$firstname $lastname</p>";
-        echo "</div>";
+        echo "</div></a>";
         echo "</div>";
         echo "</div>";
         } while ($result_aa = mysqli_fetch_assoc($result_qry));
