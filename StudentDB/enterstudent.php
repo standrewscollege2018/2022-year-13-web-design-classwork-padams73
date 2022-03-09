@@ -28,47 +28,45 @@ if(isset($_POST["submit"])) {
 
     $uploadOk = 1;
   } else {
-
+    header("Location: index.php?page=addstudent&error=type");
     $uploadOk = 0;
   }
 }
 
 // Check if file already exists
 if (file_exists($target_file)) {
-  
+  header("Location: index.php?page=addstudent&error=exists");
   $uploadOk = 0;
 }
 
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 5000000) {
-
+header("Location: index.php?page=addstudent&error=size");
   $uploadOk = 0;
 }
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-
+  header("Location: index.php?page=addstudent&error=type");
   $uploadOk = 0;
 }
 
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  header("Location: index.php?page=addstudent&error=image");
+
 // if everything is ok, try to upload file
-} else {
+
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     // Insert query
     $add_sql = "INSERT INTO student (firstname, lastname, tutorgroupID, photo) VALUES ('$firstname', '$lastname', $tutorgroupID, '$photo')";
     $add_qry = mysqli_query($dbconnect, $add_sql);
     echo "Success!";
   } else {
-    header("Location: index.php?page=addstudent&error=image");
+    header("Location: index.php?page=addstudent&error=upload");
   }
 }
 
 
 
-}
+
 
  ?>

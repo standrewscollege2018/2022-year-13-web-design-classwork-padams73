@@ -62,11 +62,39 @@ if(!isset($_SESSION['admin'])) {
           <?php
           // Check if there is an error being returned
             if(isset($_GET['error'])) {
-              ?>
-              <div class="alert alert-danger" role="alert">
-                Please enter both first and last names
-              </div>
-              <?php
+              // Check the type of error and display appropriate error message
+              if($_GET['error']=="type") {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                  Incorrect file type. Must be jpg, png or gif
+                </div>
+                <?php
+              } else if ($_GET['error']=="size") {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                  File is too big. It must be less than 5Mb
+                </div>
+                <?php
+              } else if ($_GET['error']=="exists") {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                  File already exists
+                </div>
+                <?php
+              } else if ($_GET['error']=="upload") {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                  Error uploading file. Please try again
+                </div>
+                <?php
+              } else {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                  Please enter both first and last names
+                </div>
+                <?php
+              }
+
                           }
            ?>
         </div>
