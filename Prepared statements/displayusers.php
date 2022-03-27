@@ -22,9 +22,12 @@ if ($result->num_rows > 0) {
   // This is because we turned it into an associative array first
    foreach($data as $row) {
      // Putting content into variables to make it easier to echo
+     // Set them up as links so you can see how a select query
+     // would work when there is only one record returned
+     $userID = $row['userID'];
      $username = $row['username'];
      $email = $row['email'];
-     echo "<p>$username : $email</p>";
+     echo "<p><a href='index.php?page=displayuser&userID=$userID'>$username : $email</a></p>";
     }
   } else {
     echo "<p>No data found</p>";

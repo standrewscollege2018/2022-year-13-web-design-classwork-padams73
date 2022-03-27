@@ -19,7 +19,7 @@
     <?php
       include("dbconnect.php");
 
-      
+      include("navbar.php");
     // If a page has been selected (via link) it will be included here.
     // If no page has been selected, the home.php page is included
     if (isset($_GET['page'])) {
